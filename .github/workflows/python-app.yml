@@ -10,7 +10,7 @@ on:
     branches: [ develop, main ]
 
 jobs:
-  build:
+  setup-python:
     env:
       WORKON_HOME: ~/.venv
     runs-on: ubuntu-latest
@@ -39,6 +39,12 @@ jobs:
     - name:  check cache
       run: |
         ls -latr ~/.venv
+
+  lint_and_run_unit_tests:
+    env:
+      WORKON_HOME: ~/.venv
+    runs-on: ubuntu-latest
+    needs: setup-python
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
