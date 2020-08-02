@@ -35,7 +35,7 @@ jobs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-         pipenv run pip freeze | pip install -r /dev/stdin
+         pipenv sync --dev
     - name:  check cache
       run: |
         ls -latr ~/.venv
