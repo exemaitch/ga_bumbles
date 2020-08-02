@@ -27,14 +27,14 @@ jobs:
       id: cache
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pipenv
+        path: ~/.cache/pip
         key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-pipenv-
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        pipenv sync --dev
+         pipenv run pip freeze | pip install -r /dev/stdin
     - name:  check cache
       run: |
         ls -latr ~/.cache/pipenv
