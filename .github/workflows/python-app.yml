@@ -10,7 +10,7 @@ on:
     branches: [ develop, main ]
 
 jobs:
-  setup_python:
+  setup-python:
     env:
       WORKON_HOME: ~/.venv
     runs-on: ubuntu-latest
