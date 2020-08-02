@@ -11,7 +11,8 @@ on:
 
 jobs:
   build:
-
+    env:
+      WORKON_HOME: ~/.venv
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +28,7 @@ jobs:
       id: cache
       uses: actions/cache@v2
       with:
-        path: ~/.cache/pip
+        path: ~/.venv
         key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-pipenv-
@@ -37,8 +38,7 @@ jobs:
          pipenv run pip freeze | pip install -r /dev/stdin
     - name:  check cache
       run: |
-        ls -latr ~/.cache/pipenv
-        ls -latr ~/.cache/
+        ls -latr ~/.venv
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
