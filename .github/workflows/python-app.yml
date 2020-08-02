@@ -35,6 +35,10 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
         pipenv sync --dev
+    - name:  check cache
+      run: |
+        ls -latr ~/.cache/pipenv
+        ls -latr ~/.cache/
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
