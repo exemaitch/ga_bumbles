@@ -6,8 +6,6 @@ name: Create A Release Branch
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 jobs:
   build:

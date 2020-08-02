@@ -5,9 +5,9 @@ name: Check / Lint
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ develop, main ]
 
 jobs:
   build:
@@ -20,6 +20,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.7
+    - name:  Install pipenv
+      run: |
+        python -m pip install --upgrade pipenv
     - name: Cache
       id: cache
       uses: actions/cache@v2
@@ -31,7 +34,6 @@ jobs:
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        python -m pip install --upgrade pipenv
         pipenv sync --dev
     - name: Lint with flake8
       run: |
