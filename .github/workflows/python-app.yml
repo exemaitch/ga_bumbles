@@ -59,7 +59,8 @@ jobs:
         echo ${{ github.base_ref }}
         echo ${{ github.ref }}
         echo ${{ github.event_name }}
-        echo ${{ github.event }}
+        echo ${{ github.event.pull_request.merged }}
+        echo ${{ github.event.pull_request.action }}
     - name: Create a release branch
       run: |
         BRANCH=release-`date +%s`
