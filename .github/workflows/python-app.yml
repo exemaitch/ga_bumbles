@@ -54,6 +54,10 @@ jobs:
     needs: lint_and_run_unit_tests
     steps:
     - uses: actions/checkout@v2
+    - name:  Echo variables
+      run: |
+        echo ${{ github.ref }}
+        echo ${{ github.event_name }}
     - name: Create a release branch
       run: |
         BRANCH=release-`date +%s`
