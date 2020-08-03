@@ -59,7 +59,7 @@ jobs:
         BRANCH=release-`date +%s`
         git checkout -b $BRANCH
         git push --set-upstream origin $BRANCH
-      if: contains(github.ref, 'develop') && github.event_name == 'push'
+      if: contains(github.ref, 'develop') && github.event_name == 'pull_request'
 
 
 
