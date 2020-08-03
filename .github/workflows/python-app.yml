@@ -59,6 +59,7 @@ jobs:
         echo ${{ github.base_ref }}
         echo ${{ github.ref }}
         echo ${{ github.event_name }}
+        echo ${{ github.event }}
     - name: Create a release branch
       run: |
         BRANCH=release-`date +%s`
